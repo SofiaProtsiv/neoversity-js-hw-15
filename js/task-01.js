@@ -7,19 +7,17 @@
 - Якщо введена правильна кількість символів, то border інпуту стає зеленим, якщо неправильна кількість - червоним.
 */
 
-const validationInput = document.querySelector('#validation-input');
-const dataLength = Number(validationInput.getAttribute('data-length'));
-validationInput.addEventListener("blur", onInputChange)
+const textInput = document.querySelector("#validation-input");
 
-
-function onInputChange(event) {
-    validationInput.textContent = event.currentTarget.value;
-
-    if (validationInput.textContent.length === dataLength) {
-        validationInput.classList.add("valid");
-        validationInput.classList.remove("invalid");
-    } else {
-        validationInput.classList.add("invalid");
-        validationInput.classList.remove("valid");
-    }
-}
+textInput.addEventListener("blur", (event) => {
+  if (
+    event.currentTarget.value.length ===
+    Number(event.currentTarget.dataset.length)
+  ) {
+    textInput.classList.add("valid");
+    textInput.classList.remove("invalid");
+  } else {
+    textInput.classList.add("invalid");
+    textInput.classList.remove("valid");
+  }
+});
