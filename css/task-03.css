@@ -1,0 +1,10 @@
+.gallery{
+    text-decoration: none;
+}
+.galleryItem{
+    margin-bottom: 20px;
+    list-style: none;
+}
+.galleryImg{
+    width: 50%;
+}
