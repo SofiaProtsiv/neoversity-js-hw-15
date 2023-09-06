@@ -4,9 +4,13 @@
 ? Напиши скрипт, який змінює кольори фону елемента <body> через інлайн-стиль по кліку на button.change-color і виводить значення кольору в span.color. Для генерування випадкового кольору використовуй функцію getRandomHexColor.
 */
 
-const onButtonClick = document.querySelector('.change-color');
-const bodyEl = document.querySelector('body');
-const colorName = document.querySelector('.color');
+const refs = {
+  onButtonClick: document.querySelector(".change-color"),
+  bodyEl: document.querySelector("body"),
+  colorName: document.querySelector(".color"),
+};
+
+const { onButtonClick, bodyEl, colorName } = refs;
 
 colorName.textContent = window.getComputedStyle(colorName).backgroundColor;
 
@@ -21,4 +25,4 @@ function getRandomHexColor() {
     .padStart(6, 0)}`;
 }
 
-onButtonClick.addEventListener("click", colorChange)
+onButtonClick.addEventListener("click", colorChange);

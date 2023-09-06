@@ -11,38 +11,45 @@
 Створи функцію destroyBoxes(), яка очищає вміст div#boxes, у такий спосіб видаляючи всі створені елементи.
 */
 
-const create = document.querySelector('[data-create]');
-const destroy = document.querySelector('[data-destroy]');
-const boxes = document.getElementById('boxes');
-const inputEl = document.querySelector('input');
+const refs = {
+  create: document.querySelector("[data-create]"),
+  destroy: document.querySelector("[data-destroy]"),
+  boxes: document.getElementById("boxes"),
+  inputEl: document.querySelector("input"),
+};
 
-function createBoxes() {
+const { create, destroy, boxes, inputEl } = refs;
+
+function getAmount() {
   const amount = parseInt(inputEl.value);
-
   if (!amount || amount < 1) return;
 
+  createBoxes(amount);
+}
+
+function createBoxes(amount) {
   const basicSize = 30;
   const fragment = document.createDocumentFragment();
-  boxes.innerHTML = '';
+  boxes.innerHTML = "";
 
   for (let i = 0; i < amount; i++) {
     const size = basicSize + i * 10;
-    const div = document.createElement('div');
+    const div = document.createElement("div");
     div.style.cssText = `width: ${size}px; height: ${size}px; background-color: ${getRandomHexColor()}`;
     fragment.appendChild(div);
   }
 
-  inputEl.value = '';
+  inputEl.value = "";
   boxes.appendChild(fragment);
 }
 
 function destroyBoxes() {
-  boxes.innerHTML = '';
+  boxes.innerHTML = "";
 }
 
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
 
-create.addEventListener('click', createBoxes);
-destroy.addEventListener('click', destroyBoxes);
+create.addEventListener("click", getAmount);
+destroy.addEventListener("click", destroyBoxes);
